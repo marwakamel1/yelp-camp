@@ -1,0 +1,22 @@
+
+img {
+    width: 100%;
+    vertical-align: middle;
+}
+
+
+.thumbnail{
+
+ padding: 0;
+
+}
+
+.caption-full{
+  padding-left:9px;
+
+}
+
+.delete_form{
+
+	display: inline;
+}

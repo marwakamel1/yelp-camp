@@ -1,0 +1,62 @@
+<%- include("../partials/header.ejs") %>
+ 
+
+
+     <div class="container">
+	     <div class="row">
+	         <div class="col-md-3">
+	              <h3>Yelp Camp</h3>
+	                <ul class="list-group">
+				      <li class="list-group-item active">Category 1</li>
+					  <li class="list-group-item">Category 2</li>
+					  <li class="list-group-item">Category 3</li>
+					</ul>
+	         </div>
+	         <div class="col-md-9">
+                     <div class="thumbnail">
+				         <img class="image-responsive" src="<%=finded.image%>">
+				         <div class="caption-full">
+				            
+				              <span class="pull-right"><h4>$<%=finded.price%>/night</h4></span>
+				              <h4><a href="#"><%=finded.name%></a></h4>
+				              
+				              <p><%=finded.description%></p>
+				              <em><p>Submitted by <%=finded.author.username%></p></em>
+                              <%if(currentUser && currentUser._id.equals(finded.author.id)){%>
+					              <a href="/campgrounds/<%= finded._id%>/edit" class="btn btn-warning" role="button">edit</a> 
+					              
+					              <form class="delete_form" action="/campgrounds/<%= finded._id%>?_method=DELETE" method="POST">
+								   <button class="btn btn-danger">delete</button>  
+								  </form>
+                              <%}%>
+				         </div>
+				       
+				     </div>
+				     <div class="well" >
+                       <p class="text-right"><a href="/campgrounds/<%= finded._id%>/comments/new" class="btn btn-success" role="button">add new comment</a></p> 
+                       <hr></hr>
+                       <%finded.comments.forEach(function(comment){%>
+						    <div> 
+						      <strong><%=comment.author.username%></strong><span class= "pull-right">10 days ago</span> 
+						      <p><%=comment.text%></p>
+						      <%if(currentUser && currentUser._id.equals(comment.author.id)){%>
+							      <a href="/campgrounds/<%= finded._id%>/comments/<%= comment._id%>/edit" class="btn btn-xs btn-warning" role="button">edit</a>
+							      <form class="delete_form" action="/campgrounds/<%= finded._id%>/comments/<%= comment._id%>?_method=DELETE" method="POST">
+									   <button class="btn btn-xs btn-danger">delete</button>  
+								  </form>  
+                               <%}%>
+                            </div>
+					   <%})%>
+				     </div>
+	         </div>
+         </div>
+     </div>
+  
+
+
+
+ 
+
+
+
+<%- include("../partials/footer.ejs") %>

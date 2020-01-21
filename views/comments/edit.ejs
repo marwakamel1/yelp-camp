@@ -1,0 +1,16 @@
+<%- include("../partials/header.ejs") %>
+
+
+<form action="/campgrounds/<%=v%>/comments/<%=finded._id%>?_method=PUT" method="POST">
+
+ 
+  <div class="form-group">
+    <textarea   name="edited[text]" class="form-control"  rows="3" ><%= finded.text%></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-default">Submit</button>
+
+</form>
+
+
+<%- include("../partials/footer.ejs") %>
